@@ -53,6 +53,7 @@ Partial Class Login
         Me.txtUsuario.Name = "txtUsuario"
         Me.txtUsuario.Size = New System.Drawing.Size(263, 30)
         Me.txtUsuario.TabIndex = 2
+        Me.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'txtContraseña
         '
@@ -62,6 +63,7 @@ Partial Class Login
         Me.txtContraseña.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtContraseña.Size = New System.Drawing.Size(263, 30)
         Me.txtContraseña.TabIndex = 4
+        Me.txtContraseña.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label2
         '
