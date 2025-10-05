@@ -6,10 +6,12 @@
 '     Los cambios manuales en este archivo se sobrescribirán si se regenera el código.
 ' </auto-generated>
 '------------------------------------------------------------------------------
+
 Imports System
 Imports System.Data.Entity
 Imports System.Data.Entity.Infrastructure
-
+Imports System.Data.Entity.Core.Objects
+Imports System.Linq
 
 Partial Public Class VacacionesEntities
     Inherits DbContext
@@ -23,7 +25,41 @@ Partial Public Class VacacionesEntities
     End Sub
 
     Public Overridable Property Empleado() As DbSet(Of Empleado)
-    Public Overridable Property TipoIdentificacion() As DbSet(Of TipoIdentificacion)
     Public Overridable Property Usuario() As DbSet(Of Usuario)
+    Public Overridable Property TipoIdentificacion() As DbSet(Of TipoIdentificacion)
+
+    Public Overridable Function sp_insert_empleado(nombreCompleto As String, idTipoIdentificacion As Nullable(Of Short), numIdentificacion As String, fechaIngreso As Nullable(Of Date), salarioBase As Nullable(Of Decimal), direccion As String) As Integer
+        Dim nombreCompletoParameter As ObjectParameter = If(nombreCompleto IsNot Nothing, New ObjectParameter("NombreCompleto", nombreCompleto), New ObjectParameter("NombreCompleto", GetType(String)))
+
+        Dim idTipoIdentificacionParameter As ObjectParameter = If(idTipoIdentificacion.HasValue, New ObjectParameter("idTipoIdentificacion", idTipoIdentificacion), New ObjectParameter("idTipoIdentificacion", GetType(Short)))
+
+        Dim numIdentificacionParameter As ObjectParameter = If(numIdentificacion IsNot Nothing, New ObjectParameter("NumIdentificacion", numIdentificacion), New ObjectParameter("NumIdentificacion", GetType(String)))
+
+        Dim fechaIngresoParameter As ObjectParameter = If(fechaIngreso.HasValue, New ObjectParameter("FechaIngreso", fechaIngreso), New ObjectParameter("FechaIngreso", GetType(Date)))
+
+        Dim salarioBaseParameter As ObjectParameter = If(salarioBase.HasValue, New ObjectParameter("SalarioBase", salarioBase), New ObjectParameter("SalarioBase", GetType(Decimal)))
+
+        Dim direccionParameter As ObjectParameter = If(direccion IsNot Nothing, New ObjectParameter("Direccion", direccion), New ObjectParameter("Direccion", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_insert_empleado", nombreCompletoParameter, idTipoIdentificacionParameter, numIdentificacionParameter, fechaIngresoParameter, salarioBaseParameter, direccionParameter)
+    End Function
+
+    Public Overridable Function sp_update_empleado(idEmpleado As Nullable(Of Integer), nombreCompleto As String, idTipoIdentificacion As Nullable(Of Short), numIdentificacion As String, fechaIngreso As Nullable(Of Date), salarioBase As Nullable(Of Decimal), direccion As String) As Integer
+        Dim idEmpleadoParameter As ObjectParameter = If(idEmpleado.HasValue, New ObjectParameter("idEmpleado", idEmpleado), New ObjectParameter("idEmpleado", GetType(Integer)))
+
+        Dim nombreCompletoParameter As ObjectParameter = If(nombreCompleto IsNot Nothing, New ObjectParameter("NombreCompleto", nombreCompleto), New ObjectParameter("NombreCompleto", GetType(String)))
+
+        Dim idTipoIdentificacionParameter As ObjectParameter = If(idTipoIdentificacion.HasValue, New ObjectParameter("idTipoIdentificacion", idTipoIdentificacion), New ObjectParameter("idTipoIdentificacion", GetType(Short)))
+
+        Dim numIdentificacionParameter As ObjectParameter = If(numIdentificacion IsNot Nothing, New ObjectParameter("NumIdentificacion", numIdentificacion), New ObjectParameter("NumIdentificacion", GetType(String)))
+
+        Dim fechaIngresoParameter As ObjectParameter = If(fechaIngreso.HasValue, New ObjectParameter("FechaIngreso", fechaIngreso), New ObjectParameter("FechaIngreso", GetType(Date)))
+
+        Dim salarioBaseParameter As ObjectParameter = If(salarioBase.HasValue, New ObjectParameter("SalarioBase", salarioBase), New ObjectParameter("SalarioBase", GetType(Decimal)))
+
+        Dim direccionParameter As ObjectParameter = If(direccion IsNot Nothing, New ObjectParameter("Direccion", direccion), New ObjectParameter("Direccion", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_update_empleado", idEmpleadoParameter, nombreCompletoParameter, idTipoIdentificacionParameter, numIdentificacionParameter, fechaIngresoParameter, salarioBaseParameter, direccionParameter)
+    End Function
 
 End Class

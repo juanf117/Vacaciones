@@ -11,7 +11,7 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class TipoIdentificacion
-    Public Property idTipoIdentidicacion As Short
+    Public Property idTipoIdentificacion As Short
     Public Property DescTipoIdentificacion As String
     Public Property Activo As Nullable(Of Boolean)
 

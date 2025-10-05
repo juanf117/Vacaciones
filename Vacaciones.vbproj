@@ -83,6 +83,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Empleados.Designer.vb">
+      <DependentUpon>Empleados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Empleados.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsertarEmpleado.Designer.vb">
+      <DependentUpon>InsertarEmpleado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InsertarEmpleado.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Login.Designer.vb">
       <DependentUpon>Login.vb</DependentUpon>
     </Compile>
@@ -113,6 +125,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Empleados.resx">
+      <DependentUpon>Empleados.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertarEmpleado.resx">
+      <DependentUpon>InsertarEmpleado.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
     </EmbeddedResource>
@@ -146,6 +164,10 @@
     <None Include="Resources\close.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="DB\DB.vbproj">
+      <Project>{f29d694e-15b9-48b1-b34e-db37a9f22712}</Project>
+      <Name>DB</Name>
+    </ProjectReference>
     <ProjectReference Include="Entities\Datos.vbproj">
       <Project>{a808fc8f-9ae9-4bac-b1dc-b6006afe2109}</Project>
       <Name>Datos</Name>

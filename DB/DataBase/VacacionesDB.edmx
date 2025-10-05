@@ -20,9 +20,9 @@
         </EntityType>
         <EntityType Name="TipoIdentificacion">
           <Key>
-            <PropertyRef Name="idTipoIdentidicacion" />
+            <PropertyRef Name="idTipoIdentificacion" />
           </Key>
-          <Property Name="idTipoIdentidicacion" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTipoIdentificacion" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DescTipoIdentificacion" Type="nvarchar" MaxLength="50" />
           <Property Name="Activo" Type="bit" />
         </EntityType>
@@ -40,7 +40,7 @@
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TipoIdentificacion">
-              <PropertyRef Name="idTipoIdentidicacion" />
+              <PropertyRef Name="idTipoIdentificacion" />
             </Principal>
             <Dependent Role="Empleado">
               <PropertyRef Name="idTipoIdentificacion" />
@@ -50,6 +50,23 @@
         <Function Name="fnCalcularDiasVacaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
           <Parameter Name="fechaInicio" Type="date" Mode="In" />
           <Parameter Name="fechaFin" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_insert_empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombreCompleto" Type="nvarchar" Mode="In" />
+          <Parameter Name="idTipoIdentificacion" Type="smallint" Mode="In" />
+          <Parameter Name="NumIdentificacion" Type="varchar" Mode="In" />
+          <Parameter Name="FechaIngreso" Type="date" Mode="In" />
+          <Parameter Name="SalarioBase" Type="decimal" Mode="In" />
+          <Parameter Name="Direccion" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_update_empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idEmpleado" Type="int" Mode="In" />
+          <Parameter Name="NombreCompleto" Type="nvarchar" Mode="In" />
+          <Parameter Name="idTipoIdentificacion" Type="smallint" Mode="In" />
+          <Parameter Name="NumIdentificacion" Type="varchar" Mode="In" />
+          <Parameter Name="FechaIngreso" Type="date" Mode="In" />
+          <Parameter Name="SalarioBase" Type="decimal" Mode="In" />
+          <Parameter Name="Direccion" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="VacacionesModelStoreContainer">
           <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
@@ -76,37 +93,33 @@
           <Property Name="SalarioBase" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Direccion" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="Activo" Type="Boolean" />
-          <NavigationProperty Name="TipoIdentificacion" Relationship="Self.FK_Empleado_TipoIdentificacion" FromRole="Empleado" ToRole="TipoIdentificacion" />
+          <NavigationProperty Name="TipoIdentificacion" Relationship="VacacionesModel.FK_Empleado_TipoIdentificacion" FromRole="Empleado" ToRole="TipoIdentificacion" />
         </EntityType>
-        <EntityType Name="TipoIdentificacion">
-          <Key>
-            <PropertyRef Name="idTipoIdentidicacion" />
-          </Key>
-          <Property Name="idTipoIdentidicacion" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DescTipoIdentificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Activo" Type="Boolean" />
-          <NavigationProperty Name="Empleado" Relationship="Self.FK_Empleado_TipoIdentificacion" FromRole="TipoIdentificacion" ToRole="Empleado" />
-        </EntityType>
-        <Association Name="FK_Empleado_TipoIdentificacion">
-          <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="1" />
-          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoIdentificacion">
-              <PropertyRef Name="idTipoIdentidicacion" />
-            </Principal>
-            <Dependent Role="Empleado">
-              <PropertyRef Name="idTipoIdentificacion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="VacacionesEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Empleado" EntityType="Self.Empleado" />
-          <EntitySet Name="TipoIdentificacion" EntityType="Self.TipoIdentificacion" />
-          <AssociationSet Name="FK_Empleado_TipoIdentificacion" Association="Self.FK_Empleado_TipoIdentificacion">
+          <EntitySet Name="Usuario" EntityType="VacacionesModel.Usuario" />
+          <EntitySet Name="TipoIdentificacion" EntityType="VacacionesModel.TipoIdentificacion" />
+          <AssociationSet Name="FK_Empleado_TipoIdentificacion" Association="VacacionesModel.FK_Empleado_TipoIdentificacion">
             <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
-          <EntitySet Name="Usuario" EntityType="VacacionesModel.Usuario" />
+          <FunctionImport Name="sp_insert_empleado">
+            <Parameter Name="NombreCompleto" Mode="In" Type="String" />
+            <Parameter Name="idTipoIdentificacion" Mode="In" Type="Int16" />
+            <Parameter Name="NumIdentificacion" Mode="In" Type="String" />
+            <Parameter Name="FechaIngreso" Mode="In" Type="DateTime" />
+            <Parameter Name="SalarioBase" Mode="In" Type="Decimal" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_update_empleado">
+            <Parameter Name="idEmpleado" Mode="In" Type="Int32" />
+            <Parameter Name="NombreCompleto" Mode="In" Type="String" />
+            <Parameter Name="idTipoIdentificacion" Mode="In" Type="Int16" />
+            <Parameter Name="NumIdentificacion" Mode="In" Type="String" />
+            <Parameter Name="FechaIngreso" Mode="In" Type="DateTime" />
+            <Parameter Name="SalarioBase" Mode="In" Type="Decimal" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Usuario">
           <Key>
@@ -117,6 +130,27 @@
           <Property Name="Contraseña" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Activo" Type="Boolean" />
         </EntityType>
+        <EntityType Name="TipoIdentificacion">
+          <Key>
+            <PropertyRef Name="idTipoIdentificacion" />
+          </Key>
+          <Property Name="idTipoIdentificacion" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescTipoIdentificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="Empleado" Relationship="VacacionesModel.FK_Empleado_TipoIdentificacion" FromRole="TipoIdentificacion" ToRole="Empleado" />
+        </EntityType>
+        <Association Name="FK_Empleado_TipoIdentificacion">
+          <End Type="VacacionesModel.TipoIdentificacion" Role="TipoIdentificacion" Multiplicity="1" />
+          <End Type="VacacionesModel.Empleado" Role="Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoIdentificacion">
+              <PropertyRef Name="idTipoIdentificacion" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="idTipoIdentificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -137,15 +171,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TipoIdentificacion">
-            <EntityTypeMapping TypeName="VacacionesModel.TipoIdentificacion">
-              <MappingFragment StoreEntitySet="TipoIdentificacion">
-                <ScalarProperty Name="idTipoIdentidicacion" ColumnName="idTipoIdentidicacion" />
-                <ScalarProperty Name="DescTipoIdentificacion" ColumnName="DescTipoIdentificacion" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="VacacionesModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
@@ -156,6 +181,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TipoIdentificacion">
+            <EntityTypeMapping TypeName="VacacionesModel.TipoIdentificacion">
+              <MappingFragment StoreEntitySet="TipoIdentificacion">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="DescTipoIdentificacion" ColumnName="DescTipoIdentificacion" />
+                <ScalarProperty Name="idTipoIdentificacion" ColumnName="idTipoIdentificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_insert_empleado" FunctionName="VacacionesModel.Store.sp_insert_empleado" />
+          <FunctionImportMapping FunctionImportName="sp_update_empleado" FunctionName="VacacionesModel.Store.sp_update_empleado" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

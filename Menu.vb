@@ -9,4 +9,10 @@
 
         Me.Opacity = 100
     End Sub
+
+    Private Sub RegistroToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RegistroToolStripMenuItem.Click
+        Dim EmpleadosForm As New Empleados()
+        EmpleadosForm.MdiParent = Me
+        EmpleadosForm.Show()
+    End Sub
 End Class
