@@ -75,4 +75,11 @@ Public Class Empleados
             cargarEmpleados()
         End If
     End Sub
+
+    Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
+        Dim emp As New InsertarEmpleado()
+        emp.edita = False
+        emp.ShowDialog()
+        cargarEmpleados()
+    End Sub
 End Class

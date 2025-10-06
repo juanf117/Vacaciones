@@ -15,4 +15,10 @@
         EmpleadosForm.MdiParent = Me
         EmpleadosForm.Show()
     End Sub
+
+    Private Sub DescansadasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DescansadasToolStripMenuItem.Click
+        Dim vacaciones As New VacacionesDescansadas()
+        vacaciones.MdiParent = Me
+        vacaciones.Show()
+    End Sub
 End Class

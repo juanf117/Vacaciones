@@ -27,6 +27,7 @@ Partial Public Class VacacionesEntities
     Public Overridable Property Empleado() As DbSet(Of Empleado)
     Public Overridable Property Usuario() As DbSet(Of Usuario)
     Public Overridable Property TipoIdentificacion() As DbSet(Of TipoIdentificacion)
+    Public Overridable Property VacacionesDescansadas() As DbSet(Of VacacionesDescansadas)
 
     Public Overridable Function sp_insert_empleado(nombreCompleto As String, idTipoIdentificacion As Nullable(Of Short), numIdentificacion As String, fechaIngreso As Nullable(Of Date), salarioBase As Nullable(Of Decimal), direccion As String) As Integer
         Dim nombreCompletoParameter As ObjectParameter = If(nombreCompleto IsNot Nothing, New ObjectParameter("NombreCompleto", nombreCompleto), New ObjectParameter("NombreCompleto", GetType(String)))
@@ -60,6 +61,36 @@ Partial Public Class VacacionesEntities
         Dim direccionParameter As ObjectParameter = If(direccion IsNot Nothing, New ObjectParameter("Direccion", direccion), New ObjectParameter("Direccion", GetType(String)))
 
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_update_empleado", idEmpleadoParameter, nombreCompletoParameter, idTipoIdentificacionParameter, numIdentificacionParameter, fechaIngresoParameter, salarioBaseParameter, direccionParameter)
+    End Function
+
+    Public Overridable Function sp_delete_vacaciones_descansadas(idVacacionesDescansadas As Nullable(Of Integer)) As Integer
+        Dim idVacacionesDescansadasParameter As ObjectParameter = If(idVacacionesDescansadas.HasValue, New ObjectParameter("idVacacionesDescansadas", idVacacionesDescansadas), New ObjectParameter("idVacacionesDescansadas", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_delete_vacaciones_descansadas", idVacacionesDescansadasParameter)
+    End Function
+
+    Public Overridable Function sp_insert_vacaciones_descansadas(idEmpleado As Nullable(Of Integer), fecha As Nullable(Of Date), cantidad As Nullable(Of Double), descripcion As String) As Integer
+        Dim idEmpleadoParameter As ObjectParameter = If(idEmpleado.HasValue, New ObjectParameter("idEmpleado", idEmpleado), New ObjectParameter("idEmpleado", GetType(Integer)))
+
+        Dim fechaParameter As ObjectParameter = If(fecha.HasValue, New ObjectParameter("Fecha", fecha), New ObjectParameter("Fecha", GetType(Date)))
+
+        Dim cantidadParameter As ObjectParameter = If(cantidad.HasValue, New ObjectParameter("Cantidad", cantidad), New ObjectParameter("Cantidad", GetType(Double)))
+
+        Dim descripcionParameter As ObjectParameter = If(descripcion IsNot Nothing, New ObjectParameter("Descripcion", descripcion), New ObjectParameter("Descripcion", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_insert_vacaciones_descansadas", idEmpleadoParameter, fechaParameter, cantidadParameter, descripcionParameter)
+    End Function
+
+    Public Overridable Function sp_update_vacaciones_descansadas(idVacacionesDescansadas As Nullable(Of Integer), fecha As Nullable(Of Date), cantidad As Nullable(Of Double), descripcion As String) As Integer
+        Dim idVacacionesDescansadasParameter As ObjectParameter = If(idVacacionesDescansadas.HasValue, New ObjectParameter("idVacacionesDescansadas", idVacacionesDescansadas), New ObjectParameter("idVacacionesDescansadas", GetType(Integer)))
+
+        Dim fechaParameter As ObjectParameter = If(fecha.HasValue, New ObjectParameter("Fecha", fecha), New ObjectParameter("Fecha", GetType(Date)))
+
+        Dim cantidadParameter As ObjectParameter = If(cantidad.HasValue, New ObjectParameter("Cantidad", cantidad), New ObjectParameter("Cantidad", GetType(Double)))
+
+        Dim descripcionParameter As ObjectParameter = If(descripcion IsNot Nothing, New ObjectParameter("Descripcion", descripcion), New ObjectParameter("Descripcion", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_update_vacaciones_descansadas", idVacacionesDescansadasParameter, fechaParameter, cantidadParameter, descripcionParameter)
     End Function
 
 End Class

@@ -10,17 +10,14 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Empleado
+Partial Public Class VacacionesDescansadas
+    Public Property idVacacionesDescansadas As Integer
     Public Property idEmpleado As Integer
-    Public Property NombreCompleto As String
-    Public Property idTipoIdentificacion As Short
-    Public Property NumIdentificacion As String
-    Public Property FechaIngreso As Nullable(Of Date)
-    Public Property SalarioBase As Nullable(Of Decimal)
-    Public Property Direccion As String
+    Public Property Fecha As Date
+    Public Property Cantidad As Double
+    Public Property Descripcion As String
     Public Property Activo As Nullable(Of Boolean)
 
-    Public Overridable Property TipoIdentificacion As TipoIdentificacion
-    Public Overridable Property VacacionesDescansadas As ICollection(Of VacacionesDescansadas) = New HashSet(Of VacacionesDescansadas)
+    Public Overridable Property Empleado As Empleado
 
 End Class

@@ -26,6 +26,7 @@ Partial Class Menu
         Me.EmpleadosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RegistroToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VacacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DescansadasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -35,7 +36,8 @@ Partial Class Menu
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EmpleadosToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(707, 28)
+        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
+        Me.MenuStrip1.Size = New System.Drawing.Size(530, 24)
         Me.MenuStrip1.TabIndex = 2
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -43,29 +45,37 @@ Partial Class Menu
         '
         Me.EmpleadosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegistroToolStripMenuItem, Me.VacacionesToolStripMenuItem})
         Me.EmpleadosToolStripMenuItem.Name = "EmpleadosToolStripMenuItem"
-        Me.EmpleadosToolStripMenuItem.Size = New System.Drawing.Size(97, 24)
+        Me.EmpleadosToolStripMenuItem.Size = New System.Drawing.Size(77, 20)
         Me.EmpleadosToolStripMenuItem.Text = "Empleados"
         '
         'RegistroToolStripMenuItem
         '
         Me.RegistroToolStripMenuItem.Name = "RegistroToolStripMenuItem"
-        Me.RegistroToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.RegistroToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.RegistroToolStripMenuItem.Text = "Registro"
         '
         'VacacionesToolStripMenuItem
         '
+        Me.VacacionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DescansadasToolStripMenuItem})
         Me.VacacionesToolStripMenuItem.Name = "VacacionesToolStripMenuItem"
-        Me.VacacionesToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.VacacionesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.VacacionesToolStripMenuItem.Text = "Vacaciones"
+        '
+        'DescansadasToolStripMenuItem
+        '
+        Me.DescansadasToolStripMenuItem.Name = "DescansadasToolStripMenuItem"
+        Me.DescansadasToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.DescansadasToolStripMenuItem.Text = "Descansadas"
         '
         'Menu
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(707, 471)
+        Me.ClientSize = New System.Drawing.Size(530, 383)
         Me.Controls.Add(Me.MenuStrip1)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Menu"
         Me.Opacity = 0R
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -82,4 +92,5 @@ Partial Class Menu
     Friend WithEvents EmpleadosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RegistroToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VacacionesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DescansadasToolStripMenuItem As ToolStripMenuItem
 End Class

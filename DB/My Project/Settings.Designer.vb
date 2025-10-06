@@ -57,7 +57,7 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-QCTEOBG;Initial Catalog=Vacaciones;Persist Security Info=True"& _ 
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=IT-LPT-PROGRAM2;Initial Catalog=Vacaciones;Persist Security Info=True"& _ 
             ";User ID=sa;Password=1234;TrustServerCertificate=True")>  _
         Public ReadOnly Property VacacionesConexion() As String
             Get

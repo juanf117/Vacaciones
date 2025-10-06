@@ -35,6 +35,17 @@
           <Property Name="Contraseña" Type="nvarchar(max)" />
           <Property Name="Activo" Type="bit" />
         </EntityType>
+        <EntityType Name="VacacionesDescansadas">
+          <Key>
+            <PropertyRef Name="idVacacionesDescansadas" />
+          </Key>
+          <Property Name="idVacacionesDescansadas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idEmpleado" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Cantidad" Type="float" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
         <Association Name="FK_Empleado_TipoIdentificacion">
           <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
@@ -47,9 +58,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_VacacionesDescansados_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="VacacionesDescansadas" Type="Self.VacacionesDescansadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="VacacionesDescansadas">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="fnCalcularDiasVacaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
           <Parameter Name="fechaInicio" Type="date" Mode="In" />
           <Parameter Name="fechaFin" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_delete_vacaciones_descansadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idVacacionesDescansadas" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_insert_empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NombreCompleto" Type="nvarchar" Mode="In" />
@@ -58,6 +84,12 @@
           <Parameter Name="FechaIngreso" Type="date" Mode="In" />
           <Parameter Name="SalarioBase" Type="decimal" Mode="In" />
           <Parameter Name="Direccion" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_insert_vacaciones_descansadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idEmpleado" Type="int" Mode="In" />
+          <Parameter Name="Fecha" Type="date" Mode="In" />
+          <Parameter Name="Cantidad" Type="float" Mode="In" />
+          <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_update_empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idEmpleado" Type="int" Mode="In" />
@@ -68,13 +100,24 @@
           <Parameter Name="SalarioBase" Type="decimal" Mode="In" />
           <Parameter Name="Direccion" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_update_vacaciones_descansadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idVacacionesDescansadas" Type="int" Mode="In" />
+          <Parameter Name="Fecha" Type="date" Mode="In" />
+          <Parameter Name="Cantidad" Type="float" Mode="In" />
+          <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="VacacionesModelStoreContainer">
           <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoIdentificacion" EntityType="Self.TipoIdentificacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VacacionesDescansadas" EntityType="Self.VacacionesDescansadas" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Empleado_TipoIdentificacion" Association="Self.FK_Empleado_TipoIdentificacion">
             <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
             <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VacacionesDescansados_Empleado" Association="Self.FK_VacacionesDescansados_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="VacacionesDescansadas" EntitySet="VacacionesDescansadas" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -94,6 +137,7 @@
           <Property Name="Direccion" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="Activo" Type="Boolean" />
           <NavigationProperty Name="TipoIdentificacion" Relationship="VacacionesModel.FK_Empleado_TipoIdentificacion" FromRole="Empleado" ToRole="TipoIdentificacion" />
+          <NavigationProperty Name="VacacionesDescansadas" Relationship="VacacionesModel.FK_VacacionesDescansados_Empleado" FromRole="Empleado" ToRole="VacacionesDescansadas" />
         </EntityType>
         <EntityContainer Name="VacacionesEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Empleado" EntityType="Self.Empleado" />
@@ -119,6 +163,26 @@
             <Parameter Name="FechaIngreso" Mode="In" Type="DateTime" />
             <Parameter Name="SalarioBase" Mode="In" Type="Decimal" />
             <Parameter Name="Direccion" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="VacacionesDescansadas" EntityType="VacacionesModel.VacacionesDescansadas" />
+          <AssociationSet Name="FK_VacacionesDescansados_Empleado" Association="VacacionesModel.FK_VacacionesDescansados_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="VacacionesDescansadas" EntitySet="VacacionesDescansadas" />
+          </AssociationSet>
+          <FunctionImport Name="sp_delete_vacaciones_descansadas">
+            <Parameter Name="idVacacionesDescansadas" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_insert_vacaciones_descansadas">
+            <Parameter Name="idEmpleado" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="Cantidad" Mode="In" Type="Double" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_update_vacaciones_descansadas">
+            <Parameter Name="idVacacionesDescansadas" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="Cantidad" Mode="In" Type="Double" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Usuario">
@@ -148,6 +212,30 @@
             </Principal>
             <Dependent Role="Empleado">
               <PropertyRef Name="idTipoIdentificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VacacionesDescansadas">
+          <Key>
+            <PropertyRef Name="idVacacionesDescansadas" />
+          </Key>
+          <Property Name="idVacacionesDescansadas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cantidad" Type="Double" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="Empleado" Relationship="VacacionesModel.FK_VacacionesDescansados_Empleado" FromRole="VacacionesDescansadas" ToRole="Empleado" />
+        </EntityType>
+        <Association Name="FK_VacacionesDescansados_Empleado">
+          <End Type="VacacionesModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="VacacionesModel.VacacionesDescansadas" Role="VacacionesDescansadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="VacacionesDescansadas">
+              <PropertyRef Name="idEmpleado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -192,6 +280,21 @@
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_insert_empleado" FunctionName="VacacionesModel.Store.sp_insert_empleado" />
           <FunctionImportMapping FunctionImportName="sp_update_empleado" FunctionName="VacacionesModel.Store.sp_update_empleado" />
+          <EntitySetMapping Name="VacacionesDescansadas">
+            <EntityTypeMapping TypeName="VacacionesModel.VacacionesDescansadas">
+              <MappingFragment StoreEntitySet="VacacionesDescansadas">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="idVacacionesDescansadas" ColumnName="idVacacionesDescansadas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_delete_vacaciones_descansadas" FunctionName="VacacionesModel.Store.sp_delete_vacaciones_descansadas" />
+          <FunctionImportMapping FunctionImportName="sp_insert_vacaciones_descansadas" FunctionName="VacacionesModel.Store.sp_insert_vacaciones_descansadas" />
+          <FunctionImportMapping FunctionImportName="sp_update_vacaciones_descansadas" FunctionName="VacacionesModel.Store.sp_update_vacaciones_descansadas" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

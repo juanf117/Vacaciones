@@ -7,7 +7,9 @@ Public Class InsertarEmpleado
         cbxTipoIdentificacion.DisplayMember = "DescTipoIdentificacion"
         cbxTipoIdentificacion.ValueMember = "idTipoIdentificacion"
         If edita Then
-            cbxTipoIdentificacion.SelectedValue = idTipoIdentificacion
+            cbxTipoIdentificacion.SelectedIndex = idTipoIdentificacion - 1
+        Else
+            cbxTipoIdentificacion.SelectedIndex = -1
         End If
 
     End Sub
@@ -61,6 +63,12 @@ Public Class InsertarEmpleado
                                            dtFechaIngreso.Value, txtSalarioBase.Value, txtDireccion.Text)
             MessageBox.Show("Empleado editado correctamente", "Edición exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
+            'validar que no exista el mismo numero de identificacion
+            If DatosEmpleado.ValidarIdentificacion(cbxTipoIdentificacion.SelectedValue, txtIdentificacion.Text) Then
+                epError.SetError(txtIdentificacion, "Ya existe un empleado con este número de identificación")
+                txtIdentificacion.Focus()
+                Return
+            End If
             DatosEmpleado.InsertarEmpleado(txtNombre.Text, cbxTipoIdentificacion.SelectedValue, txtIdentificacion.Text,
                                            dtFechaIngreso.Value, txtSalarioBase.Value, txtDireccion.Text)
             MessageBox.Show("Empleado guardado correctamente", "Edición exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)

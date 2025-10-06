@@ -1,4 +1,4 @@
-﻿' La generación de código T4 está habilitada para el modelo 'C:\Users\HP\source\repos\Invercasa\Vacaciones\DB\DataBase\VacacionesDB.edmx'. 
+﻿' La generación de código T4 está habilitada para el modelo 'C:\Users\j.vilchez\Documents\j.vilchez\inver\Vacaciones\DB\DataBase\VacacionesDB.edmx'. 
 ' Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 ' por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 ' el modelo en el diseñador.

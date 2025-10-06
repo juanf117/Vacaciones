@@ -47,9 +47,10 @@ Partial Class InsertarEmpleado
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(123, 29)
+        Me.Label1.Location = New System.Drawing.Point(100, 24)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(31, 20)
+        Me.Label1.Size = New System.Drawing.Size(25, 17)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "ID:"
         '
@@ -57,9 +58,10 @@ Partial Class InsertarEmpleado
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(5, 63)
+        Me.Label2.Location = New System.Drawing.Point(4, 51)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(149, 20)
+        Me.Label2.Size = New System.Drawing.Size(125, 17)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Nombre Completo:"
         '
@@ -67,9 +69,10 @@ Partial Class InsertarEmpleado
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(5, 100)
+        Me.Label3.Location = New System.Drawing.Point(4, 81)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(149, 20)
+        Me.Label3.Size = New System.Drawing.Size(126, 17)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Tipo Identificación:"
         '
@@ -77,9 +80,10 @@ Partial Class InsertarEmpleado
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(18, 136)
+        Me.Label4.Location = New System.Drawing.Point(14, 110)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(136, 20)
+        Me.Label4.Size = New System.Drawing.Size(114, 17)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "N° Identificación:"
         '
@@ -87,9 +91,10 @@ Partial Class InsertarEmpleado
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(11, 169)
+        Me.Label5.Location = New System.Drawing.Point(8, 137)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(143, 20)
+        Me.Label5.Size = New System.Drawing.Size(122, 17)
         Me.Label5.TabIndex = 4
         Me.Label5.Text = "Fecha de Ingreso:"
         '
@@ -97,9 +102,10 @@ Partial Class InsertarEmpleado
         '
         Me.label8.AutoSize = True
         Me.label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.label8.Location = New System.Drawing.Point(44, 209)
+        Me.label8.Location = New System.Drawing.Point(38, 170)
+        Me.label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.label8.Name = "label8"
-        Me.label8.Size = New System.Drawing.Size(110, 20)
+        Me.label8.Size = New System.Drawing.Size(92, 17)
         Me.label8.TabIndex = 5
         Me.label8.Text = "Salario Base:"
         '
@@ -107,51 +113,58 @@ Partial Class InsertarEmpleado
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(68, 239)
+        Me.Label7.Location = New System.Drawing.Point(54, 197)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(86, 20)
+        Me.Label7.Size = New System.Drawing.Size(71, 17)
         Me.Label7.TabIndex = 6
         Me.Label7.Text = "Dirección:"
         '
         'txtId
         '
         Me.txtId.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtId.Location = New System.Drawing.Point(160, 26)
+        Me.txtId.Location = New System.Drawing.Point(129, 21)
+        Me.txtId.Margin = New System.Windows.Forms.Padding(2)
         Me.txtId.Name = "txtId"
         Me.txtId.ReadOnly = True
-        Me.txtId.Size = New System.Drawing.Size(100, 27)
+        Me.txtId.Size = New System.Drawing.Size(76, 23)
         Me.txtId.TabIndex = 7
         '
         'txtNombre
         '
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNombre.Location = New System.Drawing.Point(160, 60)
+        Me.txtNombre.Location = New System.Drawing.Point(129, 49)
+        Me.txtNombre.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(419, 27)
+        Me.txtNombre.Size = New System.Drawing.Size(315, 23)
         Me.txtNombre.TabIndex = 8
         '
         'txtIdentificacion
         '
         Me.txtIdentificacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIdentificacion.Location = New System.Drawing.Point(160, 133)
+        Me.txtIdentificacion.Location = New System.Drawing.Point(129, 108)
+        Me.txtIdentificacion.Margin = New System.Windows.Forms.Padding(2)
         Me.txtIdentificacion.Name = "txtIdentificacion"
-        Me.txtIdentificacion.Size = New System.Drawing.Size(238, 27)
+        Me.txtIdentificacion.Size = New System.Drawing.Size(180, 23)
         Me.txtIdentificacion.TabIndex = 10
         '
         'txtDireccion
         '
-        Me.txtDireccion.Location = New System.Drawing.Point(160, 239)
+        Me.txtDireccion.Location = New System.Drawing.Point(129, 197)
+        Me.txtDireccion.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtDireccion.MaxLength = 1000
         Me.txtDireccion.Name = "txtDireccion"
-        Me.txtDireccion.Size = New System.Drawing.Size(419, 96)
+        Me.txtDireccion.Size = New System.Drawing.Size(315, 79)
         Me.txtDireccion.TabIndex = 13
         Me.txtDireccion.Text = ""
         '
         'btnGuardar
         '
         Me.btnGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardar.Location = New System.Drawing.Point(246, 362)
+        Me.btnGuardar.Location = New System.Drawing.Point(193, 294)
+        Me.btnGuardar.Margin = New System.Windows.Forms.Padding(2)
         Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(104, 39)
+        Me.btnGuardar.Size = New System.Drawing.Size(78, 32)
         Me.btnGuardar.TabIndex = 14
         Me.btnGuardar.Text = "Guardar"
         Me.btnGuardar.UseVisualStyleBackColor = True
@@ -164,34 +177,37 @@ Partial Class InsertarEmpleado
         '
         Me.cbxTipoIdentificacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbxTipoIdentificacion.FormattingEnabled = True
-        Me.cbxTipoIdentificacion.Location = New System.Drawing.Point(160, 97)
+        Me.cbxTipoIdentificacion.Location = New System.Drawing.Point(129, 79)
+        Me.cbxTipoIdentificacion.Margin = New System.Windows.Forms.Padding(2)
         Me.cbxTipoIdentificacion.Name = "cbxTipoIdentificacion"
-        Me.cbxTipoIdentificacion.Size = New System.Drawing.Size(238, 28)
+        Me.cbxTipoIdentificacion.Size = New System.Drawing.Size(180, 25)
         Me.cbxTipoIdentificacion.TabIndex = 15
         '
         'dtFechaIngreso
         '
         Me.dtFechaIngreso.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtFechaIngreso.Location = New System.Drawing.Point(160, 167)
+        Me.dtFechaIngreso.Location = New System.Drawing.Point(129, 136)
+        Me.dtFechaIngreso.Margin = New System.Windows.Forms.Padding(2)
         Me.dtFechaIngreso.Name = "dtFechaIngreso"
-        Me.dtFechaIngreso.Size = New System.Drawing.Size(238, 27)
+        Me.dtFechaIngreso.Size = New System.Drawing.Size(180, 23)
         Me.dtFechaIngreso.TabIndex = 16
         '
         'txtSalarioBase
         '
         Me.txtSalarioBase.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSalarioBase.Location = New System.Drawing.Point(160, 207)
+        Me.txtSalarioBase.Location = New System.Drawing.Point(129, 168)
+        Me.txtSalarioBase.Margin = New System.Windows.Forms.Padding(2)
         Me.txtSalarioBase.Maximum = New Decimal(New Integer() {9999999, 0, 0, 0})
         Me.txtSalarioBase.Name = "txtSalarioBase"
-        Me.txtSalarioBase.Size = New System.Drawing.Size(190, 27)
+        Me.txtSalarioBase.Size = New System.Drawing.Size(142, 23)
         Me.txtSalarioBase.TabIndex = 17
         '
         'InsertarEmpleado
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(605, 413)
+        Me.ClientSize = New System.Drawing.Size(463, 336)
         Me.Controls.Add(Me.txtSalarioBase)
         Me.Controls.Add(Me.dtFechaIngreso)
         Me.Controls.Add(Me.cbxTipoIdentificacion)
@@ -208,6 +224,7 @@ Partial Class InsertarEmpleado
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "InsertarEmpleado"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registro Empleado"

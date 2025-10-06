@@ -87,7 +87,10 @@
     <Compile Include="DatosEmpleado.vb" />
     <Compile Include="DatosTipoIdentificacion.vb" />
     <Compile Include="DatosUsuario.vb" />
+    <Compile Include="DatosVacacionesDescansadas.vb" />
     <Compile Include="SubModelos\subEmpleado.vb" />
+    <Compile Include="SubModelos\subTipoIdentificacion.vb" />
+    <Compile Include="SubModelos\subVacacionesDescansadas.vb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

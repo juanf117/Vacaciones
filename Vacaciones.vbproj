@@ -83,6 +83,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addVacacionesDescansadas.Designer.vb">
+      <DependentUpon>addVacacionesDescansadas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="addVacacionesDescansadas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlVacaciones.Designer.vb">
+      <DependentUpon>ControlVacaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlVacaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Empleados.Designer.vb">
       <DependentUpon>Empleados.vb</DependentUpon>
     </Compile>
@@ -123,8 +135,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="VacacionesDescansadas.Designer.vb">
+      <DependentUpon>VacacionesDescansadas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VacacionesDescansadas.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="addVacacionesDescansadas.resx">
+      <DependentUpon>addVacacionesDescansadas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlVacaciones.resx">
+      <DependentUpon>ControlVacaciones.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Empleados.resx">
       <DependentUpon>Empleados.vb</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +166,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VacacionesDescansadas.resx">
+      <DependentUpon>VacacionesDescansadas.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -164,10 +191,6 @@
     <None Include="Resources\close.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="DB\DB.vbproj">
-      <Project>{f29d694e-15b9-48b1-b34e-db37a9f22712}</Project>
-      <Name>DB</Name>
-    </ProjectReference>
     <ProjectReference Include="Entities\Datos.vbproj">
       <Project>{a808fc8f-9ae9-4bac-b1dc-b6006afe2109}</Project>
       <Name>Datos</Name>
