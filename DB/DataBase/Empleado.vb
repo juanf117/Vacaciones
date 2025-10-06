@@ -22,5 +22,6 @@ Partial Public Class Empleado
 
     Public Overridable Property TipoIdentificacion As TipoIdentificacion
     Public Overridable Property VacacionesDescansadas As ICollection(Of VacacionesDescansadas) = New HashSet(Of VacacionesDescansadas)
+    Public Overridable Property ControlVacaciones As ICollection(Of ControlVacaciones) = New HashSet(Of ControlVacaciones)
 
 End Class

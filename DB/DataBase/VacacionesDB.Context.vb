@@ -28,6 +28,7 @@ Partial Public Class VacacionesEntities
     Public Overridable Property Usuario() As DbSet(Of Usuario)
     Public Overridable Property TipoIdentificacion() As DbSet(Of TipoIdentificacion)
     Public Overridable Property VacacionesDescansadas() As DbSet(Of VacacionesDescansadas)
+    Public Overridable Property ControlVacaciones() As DbSet(Of ControlVacaciones)
 
     Public Overridable Function sp_insert_empleado(nombreCompleto As String, idTipoIdentificacion As Nullable(Of Short), numIdentificacion As String, fechaIngreso As Nullable(Of Date), salarioBase As Nullable(Of Decimal), direccion As String) As Integer
         Dim nombreCompletoParameter As ObjectParameter = If(nombreCompleto IsNot Nothing, New ObjectParameter("NombreCompleto", nombreCompleto), New ObjectParameter("NombreCompleto", GetType(String)))
@@ -91,6 +92,16 @@ Partial Public Class VacacionesEntities
         Dim descripcionParameter As ObjectParameter = If(descripcion IsNot Nothing, New ObjectParameter("Descripcion", descripcion), New ObjectParameter("Descripcion", GetType(String)))
 
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_update_vacaciones_descansadas", idVacacionesDescansadasParameter, fechaParameter, cantidadParameter, descripcionParameter)
+    End Function
+
+    Public Overridable Function sp_calcular_vacaciones_empleado(idEmpleado As Nullable(Of Integer), fechaInicio As Nullable(Of Date), fechaFin As Nullable(Of Date)) As Integer
+        Dim idEmpleadoParameter As ObjectParameter = If(idEmpleado.HasValue, New ObjectParameter("idEmpleado", idEmpleado), New ObjectParameter("idEmpleado", GetType(Integer)))
+
+        Dim fechaInicioParameter As ObjectParameter = If(fechaInicio.HasValue, New ObjectParameter("FechaInicio", fechaInicio), New ObjectParameter("FechaInicio", GetType(Date)))
+
+        Dim fechaFinParameter As ObjectParameter = If(fechaFin.HasValue, New ObjectParameter("FechaFin", fechaFin), New ObjectParameter("FechaFin", GetType(Date)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_calcular_vacaciones_empleado", idEmpleadoParameter, fechaInicioParameter, fechaFinParameter)
     End Function
 
 End Class

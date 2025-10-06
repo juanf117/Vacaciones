@@ -11,6 +11,8 @@
         <AssociationConnector Association="VacacionesModel.FK_Empleado_TipoIdentificacion" />
         <EntityTypeShape EntityType="VacacionesModel.VacacionesDescansadas" Width="1.5" PointX="5.25" PointY="1.25" />
         <AssociationConnector Association="VacacionesModel.FK_VacacionesDescansados_Empleado" />
+        <EntityTypeShape EntityType="VacacionesModel.ControlVacaciones" Width="1.5" PointX="5.25" PointY="5.125" />
+        <AssociationConnector Association="VacacionesModel.FK_ControlVacaciones_Empleado" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -89,6 +89,12 @@
     <Compile Include="addVacacionesDescansadas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CalcularVacaciones.Designer.vb">
+      <DependentUpon>CalcularVacaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CalcularVacaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ControlVacaciones.Designer.vb">
       <DependentUpon>ControlVacaciones.vb</DependentUpon>
     </Compile>
@@ -146,6 +152,9 @@
     <EmbeddedResource Include="addVacacionesDescansadas.resx">
       <DependentUpon>addVacacionesDescansadas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CalcularVacaciones.resx">
+      <DependentUpon>CalcularVacaciones.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlVacaciones.resx">
       <DependentUpon>ControlVacaciones.vb</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +170,7 @@
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>

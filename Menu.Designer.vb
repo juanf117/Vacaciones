@@ -27,6 +27,7 @@ Partial Class Menu
         Me.RegistroToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VacacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DescansadasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ControlDeVacacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -56,7 +57,7 @@ Partial Class Menu
         '
         'VacacionesToolStripMenuItem
         '
-        Me.VacacionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DescansadasToolStripMenuItem})
+        Me.VacacionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DescansadasToolStripMenuItem, Me.ControlDeVacacionesToolStripMenuItem})
         Me.VacacionesToolStripMenuItem.Name = "VacacionesToolStripMenuItem"
         Me.VacacionesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.VacacionesToolStripMenuItem.Text = "Vacaciones"
@@ -64,8 +65,14 @@ Partial Class Menu
         'DescansadasToolStripMenuItem
         '
         Me.DescansadasToolStripMenuItem.Name = "DescansadasToolStripMenuItem"
-        Me.DescansadasToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.DescansadasToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
         Me.DescansadasToolStripMenuItem.Text = "Descansadas"
+        '
+        'ControlDeVacacionesToolStripMenuItem
+        '
+        Me.ControlDeVacacionesToolStripMenuItem.Name = "ControlDeVacacionesToolStripMenuItem"
+        Me.ControlDeVacacionesToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.ControlDeVacacionesToolStripMenuItem.Text = "Control de Vacaciones"
         '
         'Menu
         '
@@ -93,4 +100,5 @@ Partial Class Menu
     Friend WithEvents RegistroToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VacacionesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DescansadasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ControlDeVacacionesToolStripMenuItem As ToolStripMenuItem
 End Class

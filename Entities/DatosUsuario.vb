@@ -5,10 +5,10 @@ Imports DB
 Public Class DatosUsuario
     Public Shared Function ValidarIngreso(usuario As String, contraseña As String) As Boolean
 
-        Dim DB = New DB.VacacionesEntities()
+        Dim db = New DB.VacacionesEntities()
         Dim contraseñaHash As String = SHA1Hash(contraseña)
         'validar que los datos ingresados son correctos
-        Return DB.Usuario.Where(Function(u) u.Usuario1 = usuario And u.Contraseña = contraseñaHash And u.Activo = True).Any()
+        Return db.Usuario.Where(Function(u) u.Usuario1 = usuario And u.Contraseña = contraseñaHash And u.Activo = True).Any()
     End Function
 
     ' Función para generar el hash SHA-1 de la contraseña para que en la base de datos no se guarde en texto plano

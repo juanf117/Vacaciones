@@ -120,6 +120,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataBase\ControlVacaciones.vb">
+      <DependentUpon>VacacionesDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataBase\Empleado.vb">
       <DependentUpon>VacacionesDB.tt</DependentUpon>
     </Compile>

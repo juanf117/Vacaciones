@@ -21,4 +21,10 @@
         vacaciones.MdiParent = Me
         vacaciones.Show()
     End Sub
+
+    Private Sub ControlDeVacacionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ControlDeVacacionesToolStripMenuItem.Click
+        Dim vacaciones As New ControlVacaciones()
+        vacaciones.MdiParent = Me
+        vacaciones.Show()
+    End Sub
 End Class
