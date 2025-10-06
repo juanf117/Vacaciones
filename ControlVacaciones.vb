@@ -9,7 +9,7 @@ Public Class ControlVacaciones
         AddHandler cbxEmpleado.SelectedValueChanged, AddressOf cbxEmpleado_SelectedValueChanged
     End Sub
     Sub cargarVacaciones()
-        gvVacaciones.DataSource = DatosControlVacaciones.ObtenerVacaciones(cbxEmpleado.SelectedValue)
+        gvVacaciones.DataSource = DatosControlVacaciones.ObtenerVacaciones(cbxEmpleado.SelectedValue).OrderBy(Function(v) v.FechaInicio).ToList()
         obtenerTotales()
         FormatearColumnas()
     End Sub

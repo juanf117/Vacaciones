@@ -13,7 +13,7 @@ Public Class VacacionesDescansadas
         AddHandler cbxEmpleado.SelectedValueChanged, AddressOf cbxEmpleado_SelectedValueChanged
     End Sub
     Sub cargarVacacionesDescansadas()
-        gvVacaciones.DataSource = DatosVacacionesDescansadas.ObtenerVacacionesDescansadas(cbxEmpleado.SelectedValue)
+        gvVacaciones.DataSource = DatosVacacionesDescansadas.ObtenerVacacionesDescansadas(cbxEmpleado.SelectedValue).OrderBy(Function(v) v.Fecha).ToList()
         FormatearColumnas()
     End Sub
     'función para formatear las columnas del datagridview
