@@ -126,6 +126,9 @@
     <Compile Include="DataBase\Empleado.vb">
       <DependentUpon>VacacionesDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataBase\sp_select_reporte_vacaciones_Result.vb">
+      <DependentUpon>VacacionesDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataBase\TipoIdentificacion.vb">
       <DependentUpon>VacacionesDB.tt</DependentUpon>
     </Compile>

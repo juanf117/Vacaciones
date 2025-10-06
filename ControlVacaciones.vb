@@ -1,4 +1,5 @@
 ﻿Imports Datos
+Imports DevExpress.XtraReports.UI
 Public Class ControlVacaciones
     Sub cargarEmpleados()
         cbxEmpleado.DataSource = DatosEmpleado.ObtenerEmpleados()
@@ -76,6 +77,14 @@ Public Class ControlVacaciones
     End Sub
 
     Private Sub btnCalcular_Click(sender As Object, e As EventArgs) Handles btnCalcular.Click
+        epError.Clear()
+
+        'validar que los campos obligatorios no estén vacíos
+        If cbxEmpleado.SelectedIndex = -1 Then
+            epError.SetError(cbxEmpleado, "Campo requerido")
+            cbxEmpleado.Focus()
+            Return
+        End If
         Dim calcular As New CalcularVacaciones()
         calcular.idEmpleado = cbxEmpleado.SelectedValue
         calcular.dtFechaInicio.Value = dtFecha.Value
@@ -84,6 +93,14 @@ Public Class ControlVacaciones
     End Sub
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
-
+        'validar que los campos obligatorios no estén vacíos
+        If cbxEmpleado.SelectedIndex = -1 Then
+            epError.SetError(cbxEmpleado, "Campo requerido")
+            cbxEmpleado.Focus()
+            Return
+        End If
+        Dim reporte As New xrVacaciones()
+        reporte.parametro(cbxEmpleado.SelectedValue)
+        reporte.ShowPreviewDialog()
     End Sub
 End Class

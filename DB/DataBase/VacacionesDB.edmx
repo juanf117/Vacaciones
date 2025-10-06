@@ -127,6 +127,9 @@
           <Parameter Name="Cantidad" Type="float" Mode="In" />
           <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_select_reporte_vacaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idEmpleado" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_update_empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idEmpleado" Type="int" Mode="In" />
           <Parameter Name="NombreCompleto" Type="nvarchar" Mode="In" />
@@ -236,6 +239,9 @@
             <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="sp_select_reporte_vacaciones" ReturnType="Collection(VacacionesModel.sp_select_reporte_vacaciones_Result)">
+            <Parameter Name="idEmpleado" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Usuario">
           <Key>
@@ -320,6 +326,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="sp_select_reporte_vacaciones_Result">
+          <Property Type="Int32" Name="idControlVacaciones" Nullable="false" />
+          <Property Type="Int32" Name="idEmpleado" Nullable="false" />
+          <Property Type="String" Name="Mes" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="MesNumero" Nullable="false" />
+          <Property Type="Int32" Name="Anno" Nullable="false" />
+          <Property Type="DateTime" Name="FechaInicio" Nullable="true" />
+          <Property Type="DateTime" Name="FechaFin" Nullable="true" />
+          <Property Type="Double" Name="DiasGanados" Nullable="true" />
+          <Property Type="Double" Name="DiasDescansados" Nullable="true" />
+          <Property Type="Double" Name="Disponibles" Nullable="true" />
+          <Property Type="Boolean" Name="Activo" Nullable="true" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="NumIdentificacion" Nullable="false" MaxLength="40" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" />
+          <Property Type="String" Name="DescTipoIdentificacion" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -394,6 +417,27 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_calcular_vacaciones_empleado" FunctionName="VacacionesModel.Store.sp_calcular_vacaciones_empleado" />
+          <FunctionImportMapping FunctionImportName="sp_select_reporte_vacaciones" FunctionName="VacacionesModel.Store.sp_select_reporte_vacaciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VacacionesModel.sp_select_reporte_vacaciones_Result">
+                <ScalarProperty Name="idControlVacaciones" ColumnName="idControlVacaciones" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="MesNumero" ColumnName="MesNumero" />
+                <ScalarProperty Name="Anno" ColumnName="Anno" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="DiasGanados" ColumnName="DiasGanados" />
+                <ScalarProperty Name="DiasDescansados" ColumnName="DiasDescansados" />
+                <ScalarProperty Name="Disponibles" ColumnName="Disponibles" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="NumIdentificacion" ColumnName="NumIdentificacion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="DescTipoIdentificacion" ColumnName="DescTipoIdentificacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

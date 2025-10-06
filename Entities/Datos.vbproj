@@ -91,6 +91,7 @@
     <Compile Include="DatosVacacionesDescansadas.vb" />
     <Compile Include="SubModelos\subControlVacaciones.vb" />
     <Compile Include="SubModelos\subEmpleado.vb" />
+    <Compile Include="SubModelos\subReporteVacaciones.vb" />
     <Compile Include="SubModelos\subResumenVacaciones.vb" />
     <Compile Include="SubModelos\subTipoIdentificacion.vb" />
     <Compile Include="SubModelos\subVacacionesDescansadas.vb" />

@@ -104,4 +104,10 @@ Partial Public Class VacacionesEntities
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_calcular_vacaciones_empleado", idEmpleadoParameter, fechaInicioParameter, fechaFinParameter)
     End Function
 
+    Public Overridable Function sp_select_reporte_vacaciones(idEmpleado As Nullable(Of Integer)) As ObjectResult(Of sp_select_reporte_vacaciones_Result)
+        Dim idEmpleadoParameter As ObjectParameter = If(idEmpleado.HasValue, New ObjectParameter("idEmpleado", idEmpleado), New ObjectParameter("idEmpleado", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of sp_select_reporte_vacaciones_Result)("sp_select_reporte_vacaciones", idEmpleadoParameter)
+    End Function
+
 End Class

@@ -34,4 +34,23 @@ Public Class DatosControlVacaciones
 
 
     End Function
+
+    'funcion para reporte de vacaciones
+    Public Shared Function ReporteVacaciones(idEmpleado As Integer) As List(Of subReporteVacaciones)
+        Dim db = New DB.VacacionesEntities()
+        Return db.sp_select_reporte_vacaciones(idEmpleado).OrderBy(Function(r) r.Anno).ThenBy(Function(r) r.MesNumero).Select(Function(r) New subReporteVacaciones With {
+                                                                                                                    .idControlVacaciones = r.idControlVacaciones,
+                                                                                                                    .idEmpleado = r.idEmpleado,
+                                                                                                                    .Mes = r.Mes,
+                                                                                                                    .Anno = r.Anno,
+                                                                                                                    .FechaInicio = r.FechaInicio,
+                                                                                                                    .FechaFin = r.FechaFin,
+                                                                                                                    .DiasGanados = r.DiasGanados,
+                                                                                                                    .DiasDescansados = r.DiasDescansados,
+                                                                                                                    .Disponibles = r.Disponibles,
+                                                                                                                    .NombreCompleto = r.NombreCompleto,
+                                                                                                                    .NumIdentificacion = r.NumIdentificacion,
+                                                                                                                    .FechaIngreso = r.FechaIngreso,
+                                                                                                                    .DescTipoIdentificacion = r.DescTipoIdentificacion}).ToList()
+    End Function
 End Class

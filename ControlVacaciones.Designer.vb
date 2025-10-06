@@ -22,7 +22,9 @@ Partial Class ControlVacaciones
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnImprimir = New System.Windows.Forms.Button()
         Me.btnCalcular = New System.Windows.Forms.Button()
         Me.dtFecha = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -35,9 +37,10 @@ Partial Class ControlVacaciones
         Me.txtGanadas = New System.Windows.Forms.TextBox()
         Me.txtDescansadas = New System.Windows.Forms.TextBox()
         Me.txtDisponibles = New System.Windows.Forms.TextBox()
-        Me.btnImprimir = New System.Windows.Forms.Button()
+        Me.epError = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.GroupBox1.SuspendLayout()
         CType(Me.gvVacaciones, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.epError, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -53,6 +56,15 @@ Partial Class ControlVacaciones
         Me.GroupBox1.Size = New System.Drawing.Size(546, 143)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
+        '
+        'btnImprimir
+        '
+        Me.btnImprimir.Location = New System.Drawing.Point(293, 101)
+        Me.btnImprimir.Name = "btnImprimir"
+        Me.btnImprimir.Size = New System.Drawing.Size(75, 23)
+        Me.btnImprimir.TabIndex = 25
+        Me.btnImprimir.Text = "Imprimir"
+        Me.btnImprimir.UseVisualStyleBackColor = True
         '
         'btnCalcular
         '
@@ -177,14 +189,9 @@ Partial Class ControlVacaciones
         Me.txtDisponibles.Size = New System.Drawing.Size(66, 22)
         Me.txtDisponibles.TabIndex = 32
         '
-        'btnImprimir
+        'epError
         '
-        Me.btnImprimir.Location = New System.Drawing.Point(293, 101)
-        Me.btnImprimir.Name = "btnImprimir"
-        Me.btnImprimir.Size = New System.Drawing.Size(75, 23)
-        Me.btnImprimir.TabIndex = 25
-        Me.btnImprimir.Text = "Imprimir"
-        Me.btnImprimir.UseVisualStyleBackColor = True
+        Me.epError.ContainerControl = Me
         '
         'ControlVacaciones
         '
@@ -206,6 +213,7 @@ Partial Class ControlVacaciones
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.gvVacaciones, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.epError, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -225,4 +233,5 @@ Partial Class ControlVacaciones
     Friend WithEvents txtDescansadas As TextBox
     Friend WithEvents txtDisponibles As TextBox
     Friend WithEvents btnImprimir As Button
+    Friend WithEvents epError As ErrorProvider
 End Class
